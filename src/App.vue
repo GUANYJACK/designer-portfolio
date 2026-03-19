@@ -8,7 +8,7 @@
         <div class="relative w-16 h-16">
           <img
             class="rounded-full border border-gray-100 shadow-sm"
-            src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=512&h=512&q=80"
+            src="https://media.licdn.com/dms/image/v2/D5635AQFp-n-2KbId2A/profile-framedphoto-shrink_400_400/B56Zrc_3sfLQAk-/0/1764644322480?e=1774425600&amp;v=beta&amp;t=GKTaWm_ZEmz5W4b5TiSpW_lgU0OrYyOmro1yXq9O1uY"
             alt="user image"
           />
         </div>
@@ -34,9 +34,9 @@
       >
         <li class="menu-button"><a href="#">Home</a></li>
         <li class="menu-button"><a href="#work" v-smooth-scroll>Works</a></li>
-        <li class="menu-button">
+        <!-- <li class="menu-button">
           <a href="#testimonial" v-smooth-scroll>Testimonials</a>
-        </li>
+        </li> -->
         <li class="menu-button"><a href="#about" v-smooth-scroll>About</a></li>
       </ul>
     </nav>
@@ -47,37 +47,36 @@
         <h3
           class="hello-button text-gray-700 w-fit md:py-3 md:px-5 py-1 px-2 rounded-lg 3xl:text-3xl 2xl:text-xl lg:text-xl md:text-md text-sm font-semibold font-work_sans"
         >
-          👋 Hola,
+          👋 你好！Hello！Hola！
         </h3>
         <h1
           class="3xl:text-8xl 2xl:text-7xl xl:text-6xl lg:text-4xl md:text-3xl sm:text-3xl text-xl font-Eczar font-bold leading-tight text-gray-700"
         >
           It's
-          <a
-            href="https://www.linkedin.com/"
-            target="_blank"
-            class="text-black hover:underline"
-          >
-            Aliza Khan</a
-          >🙇‍♀️<br />Creative Designer and Storyteller
+          <span class="text-black font-semibold">
+            {{ profile.name }}
+          </span>
+          🐷<br />{{ profile.role }}
         </h1>
 
         <div class="md:flex gap-1 md:gap-10">
           <button class="text-white bg-gray-800 submit-button hidden md:block">
             View My Work
           </button>
-          <button
+          <a
+            href="#contact"
+            v-smooth-scroll
             class="text-gray-800 border-4 border-gray-800 submit-button mb-5 md:mb-0"
           >
             Contact Me
-          </button>
+          </a>
         </div>
       </div>
 
       <div class="w-8/12 flex justify-end">
         <img
-          class="3xl:h-[800px] 2xl:h-[650px] xl:h-[550px] lg:h-[550px] md:h-[450px] sm:h-[350px]"
-          src="./assets/profile-female.png"
+          class="max-h-[800px] w-auto object-contain"
+          src="./assets/卡通形象透明正方图.png"
           alt="user image"
         />
       </div>
@@ -150,7 +149,7 @@
     </div>
   </div>
 
-  <div class="banner-1" id="testimonial">
+  <!-- <div class="banner-1" id="testimonial">
     <div class="space-y-4 grid place-items-center mt-5">
       <h3 class="heading3">Some Generous Words</h3>
       <p class="font-work_sans text-gray-600 font-semibold leading-relaxed">
@@ -194,19 +193,13 @@
             <div
               class="relative py-12 lg:py-24 px-8 lg:px-16 text-gray-700 leading-relaxed"
             >
-              <p>
-                As
-                <strong class="text-gray-900 font-medium">Slack</strong> grows
-                rapidly, using Stripe helps them scale payments easily &mdash;
-                supporting everything from getting paid by users around the
-                world to enabling ACH payments for corporate customers.
-              </p>
+              <p v-html="profile.testimonial.quote"></p>
               <p class="mt-6">
                 <a
-                  href="#"
+                  :href="profile.testimonial.link"
                   class="font-medium text-indigo-600 hover:text-indigo-900"
                 >
-                  &rarr; Md Solaiman Hossain</a
+                  &rarr; {{ profile.testimonial.name }}</a
                 >
               </p>
             </div>
@@ -244,74 +237,43 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="banner-2 md:flex items-center md:justify-evenly" id="about">
     <img
       class="md:h-[500px] h-[400px]"
-      src="./assets/about-female.png"
+      src="./assets/坐姿透明.png"
       alt="user image"
     />
     <div class="space-y-5 py-8 px-8 md:py-16 md:px-20 md:w-1/2">
-      <h4 class="project-title item">Sheepify States</h4>
-      <p class="font-work_sans">
-        I am Salman Khan from Lucknow, India. I am working in an Indian Startup
-        as a User Eperience Designer for the past two years.
-        <br />
-        I got featured various times on many big and small marketplaces,
-        portfolio websites and blogs. I also received some awards and
-        recognitions from some of the big and small award companies. Besides
-        designing, I like to watch anime, read books and solve sudoku.
-      </p>
+      <h4 class="project-title item">{{ profile.name }}</h4>
+      <p class="font-work_sans" v-html="profile.aboutHtml"></p>
       <button class="text-sky-800 font-bold text-2xl tracking-wider">
-        View Case Study
+        More about me...
       </button>
     </div>
   </div>
 
-  <div class="banner-1 flex h-full items-center">
+  <div id="contact" class="banner-1 flex h-full items-center">
     <div class="w-7/12 p-12">
       <h2 class="text-gray-700 md:text-6xl text-2xl font-Eczar mb-5 font-bold">
         Let’s work together and make everything super cute and super useful.
       </h2>
-      <a class="underline text-2xl text-blue-600 font-work_sans"
-        >📧 hire@author.com</a
+      <a
+        class="underline text-2xl text-blue-600 font-work_sans"
+        :href="'mailto:' + profile.email"
       >
+        📧 {{ profile.email }}
+      </a>
     </div>
     <div class="w-5/12 pr-28">
       <div class="flex flex-wrap justify-end gap-2">
-        <button
-          class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
-        >
-          <svg
-            class="w-4 h-4 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:h-10 xl:w-10 fill-current"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-            />
-          </svg>
-        </button>
-
-        <button
-          class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
-        >
-          <svg
-            class="w-4 h-4 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:h-10 xl:w-10 fill-current"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
-            />
-          </svg>
-        </button>
-
-        <button
-          class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
+        <!-- Only LinkedIn + Instagram (others removed) -->
+        <a
+          href="https://www.instagram.com/guanyj_/"
+          target="_blank"
+          rel="noopener"
+          class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center justify-center rounded-2xl"
         >
           <svg
             class="w-4 h-4 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:h-10 xl:w-10 fill-current"
@@ -319,29 +281,28 @@
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-              d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"
-            />
+            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7.75a4.25 4.25 0 1 1 0 8.5 4.25 4.25 0 0 1 0-8.5zM12 9.25a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 0 0 0-5.5zm4.75-2.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>
           </svg>
-        </button>
+        </a>
 
-        <button
-          class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
+        <a
+          href="https://www.xiaohongshu.com/user/profile/640a16990000000010028c9c"
+          target="_blank"
+          rel="noopener"
+          class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center justify-center rounded-2xl"
         >
-          <svg
-            class="w-4 h-4 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:h-10 xl:w-10 fill-current"
-            role="img"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"
-            />
-          </svg>
-        </button>
+          <img
+            class="w-4 h-4 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:h-10 xl:w-10"
+            src="./assets/xiaohongshu.png"
+            alt="小红书"
+          />
+        </a>
 
-        <button
-          class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
+        <a
+          :href="profile.linkedinUrl"
+          target="_blank"
+          rel="noopener"
+          class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center justify-center rounded-2xl"
         >
           <svg
             class="w-4 h-4 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:h-10 xl:w-10 fill-current"
@@ -355,17 +316,58 @@
               ></path>
             </g>
           </svg>
-        </button>
+        </a>
       </div>
     </div>
   </div>
+
+  <button
+    v-show="showScrollTop"
+    @click="scrollToTop"
+    class="fixed bottom-6 right-6 z-50 flex items-center justify-center h-12 w-12 rounded-2xl bg-gray-800 text-white shadow-lg hover:bg-gray-700 focus:outline-none"
+    aria-label="Scroll to top"
+  >
+    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </button>
 </template>
 <script>
   export default {
     data() {
       return {
         showMenu: false,
+        showScrollTop: false,
+        profile: {
+          name: "Jack Guan",
+          role: "a self-motivated AI Enthusiast",
+          linkedinUrl: "https://www.linkedin.com/in/jackguan2/",
+          email: "guanyjack@foxmail.com",
+          aboutHtml:
+            "Ex-CCB Corporate Banking (3 Yrs)<br />MSc ISTM in CUHK <br />B.Eng in SCUT<br /> <br />" +
+            "I love exploring different perspectives and finding creative solutions to problems. <br />I am passionate about using technology to make a positive impact on people's lives and am always looking for new opportunities to grow and learn.",
+          // testimonial: {
+          //   name: "Client Name",
+          //   link: "#",
+          //   quote:
+          //     "[Client Name] said: <strong>Great work!</strong> They delivered a polished, usable experience and were a pleasure to work with.",
+          // },
+        },
       }
+    },
+    methods: {
+      scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      },
+      onScroll() {
+        this.showScrollTop = window.scrollY > 300
+      },
+    },
+    mounted() {
+      window.addEventListener("scroll", this.onScroll)
+    },
+    beforeUnmount() {
+      window.removeEventListener("scroll", this.onScroll)
     },
   }
 </script>
